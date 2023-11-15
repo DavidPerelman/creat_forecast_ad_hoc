@@ -12,3 +12,6 @@ jeru_metro_jtmt_border=up_load_shp( r'C:\Users\dpere\Documents\JTMT\creat_foreca
 forecast_point_subdistrict_il=forecast_point.sjoin(subdistrict_il[['geometry','ENG_NAME_nafa']])[['Taz_num','ENG_NAME_nafa']]
 
 forecast_point_muni_JTMT=forecast_point.query('main_sector!="Palestinian"').sjoin(muni_JTMT[['Muni_Heb', 'Sug_Muni', 'CR_PNIM', 'geometry']])[['Taz_num','Muni_Heb', 'Sug_Muni', 'CR_PNIM']]
+
+forecast_point_jeru_metro_jtmt_border=forecast_point.sjoin(jeru_metro_jtmt_border)[['Taz_num','jeru_metro']]
+print(forecast_point_jeru_metro_jtmt_border)
