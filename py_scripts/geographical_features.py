@@ -10,4 +10,5 @@ muni_JTMT=up_load_gdb( r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\dat
 jeru_metro_jtmt_border=up_load_shp( r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data\needed_files\jeru_metro_jtmt_border_221114.shp')
 
 forecast_point_subdistrict_il=forecast_point.sjoin(subdistrict_il[['geometry','ENG_NAME_nafa']])[['Taz_num','ENG_NAME_nafa']]
-print(forecast_point_subdistrict_il)
+
+forecast_point_muni_JTMT=forecast_point.query('main_sector!="Palestinian"').sjoin(muni_JTMT[['Muni_Heb', 'Sug_Muni', 'CR_PNIM', 'geometry']])[['Taz_num','Muni_Heb', 'Sug_Muni', 'CR_PNIM']]
