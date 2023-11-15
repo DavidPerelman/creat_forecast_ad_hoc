@@ -13,3 +13,8 @@ def make_point(df):
     df_point=df_point.set_geometry('centroid')
     df_point=df_point.drop(columns=['geometry'],axis=1)
     return df_point
+
+def up_load_shp(path):
+    path='{}'.format(path)
+    gpd_layer=gpd.read_file(path)
+    return gpd_layer
