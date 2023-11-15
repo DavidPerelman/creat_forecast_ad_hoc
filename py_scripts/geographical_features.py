@@ -1,5 +1,5 @@
 from forecast import forecast
-from functions import make_point, up_load_gdb
+from functions import make_point, up_load_gdb, up_load_shp
 
 forecast_point = make_point(forecast)
 
@@ -7,4 +7,5 @@ subdistrict_il=up_load_gdb( r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_ho
 
 muni_JTMT=up_load_gdb( r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data\needed_files\MUNI_border.gdb','muni_under_JTMT_ITM')
 
-# jeru_metro_jtmt_border=up_load_shp(r'\\FILE-SRV\Jtmt\projections_team\GIS_backround\INFO\צתאל\221114_גבול_מטרופולין\jeru_metro_jtmt_border_221114.shp')
+jeru_metro_jtmt_border=up_load_shp( r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data\needed_files\jeru_metro_jtmt_border_221114.shp')
+print(jeru_metro_jtmt_border)
