@@ -1,8 +1,7 @@
 import pandas as pd
+from main import folder_path_save, file_date
 
-folder_path_save=r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data'
 folder_path=r'{}\needed_files'.format(folder_path_save)
-file_date=pd.Timestamp.today().strftime('%y%m%d')
 
 def up_load_df(folder_path,file_name):
     

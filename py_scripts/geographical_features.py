@@ -1,4 +1,5 @@
 import pandas as pd
+from main import file_date
 from forecast import forecast, folder_path_save
 from functions import make_point, up_load_gdb, up_load_shp
 
@@ -36,8 +37,6 @@ forecast=forecast.set_index('Taz_num')
 
 forecast['Taz_num']=forecast.index
 
-file_date=pd.Timestamp.today().strftime('%y%m%d')
-
 save_shp_path=r'{}\For_approval\{}_taz_for_approval.shp'.format(folder_path_save,file_date)
 
-forecast.to_file(save_shp_path,index=False,encoding='UTF-8')
+# forecast.to_file(save_shp_path,index=False,encoding='UTF-8')

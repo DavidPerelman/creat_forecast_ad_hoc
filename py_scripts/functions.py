@@ -1,5 +1,6 @@
 import fiona
 import geopandas as gpd
+import pandas as pd
 
 def up_load_gdb(path, layer_name):
     path='{}'.format(path)
@@ -18,3 +19,11 @@ def up_load_shp(path):
     path='{}'.format(path)
     gpd_layer=gpd.read_file(path)
     return gpd_layer
+
+def up_load_df(folder_path,file_name):
+    
+    path_df=r'{}\{}.xlsx'.format(folder_path,file_name)
+    df=pd.read_excel(path_df)
+    df=df.dropna(how='all')
+
+    return df
