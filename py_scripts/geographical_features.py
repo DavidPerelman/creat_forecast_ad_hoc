@@ -1,6 +1,4 @@
 import pandas as pd
-# from main import file_date
-from forecast import forecast, folder_path_save
 from functions import make_point, up_load_gdb, up_load_shp
 
 def add_Ggeographical_Features(forecast):
@@ -39,7 +37,3 @@ def add_Ggeographical_Features(forecast):
     forecast['Taz_num']=forecast.index
 
     return forecast
-
-# save_shp_path=r'{}\For_approval\{}_taz_for_approval.shp'.format(folder_path_save,file_date)
-
-# forecast.to_file(save_shp_path,index=False,encoding='UTF-8')

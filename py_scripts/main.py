@@ -1,6 +1,7 @@
 import pandas as pd
 from forecast import forecast
 from geographical_features import add_Ggeographical_Features
+from uploading_index_table_elements import uploading_index_table
 
 forecast_version='with_project_50_precent_bld'
 folder_path_save=r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data'
@@ -14,5 +15,7 @@ pd.set_option('display.max_columns', None)
 
 #### הוספת מאפיינים גיאוגרפים לאזורי תנועה
 forecast=add_Ggeographical_Features(forecast)
+folder_path_save=r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data'
+index=uploading_index_table(forecast, folder_path_save, index_file_name)
 
-print(forecast)
+print(index)

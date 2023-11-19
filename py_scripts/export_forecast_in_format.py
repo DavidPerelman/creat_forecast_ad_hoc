@@ -1,7 +1,7 @@
 import pandas as pd
 from functions import up_load_df
 from status_exists import forecast
-from main import folder_path_save, file_date
+from main import folder_path_save, file_date, forecast
 
 col=['Taz_num',
 'yosh',
