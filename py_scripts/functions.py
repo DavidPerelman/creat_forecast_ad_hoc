@@ -21,7 +21,6 @@ def up_load_shp(path):
     return gpd_layer
 
 def up_load_df(folder_path,file_name):
-    
     path_df=r'{}\{}.xlsx'.format(folder_path,file_name)
     df=pd.read_excel(path_df)
     df=df.dropna(how='all')
