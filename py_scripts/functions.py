@@ -26,3 +26,33 @@ def up_load_df(folder_path,file_name):
     df=df.dropna(how='all')
 
     return df
+
+def split_index_by_taz(index,taz,min_prec,col_name_to_split):
+    index['index_area']=index.area
+    
+    taz['taz_area']=taz.area
+
+    index_taz=index.overlay(taz[['Taz_num','taz_area','geometry']])
+
+    index_taz['small_area']=index_taz.area
+
+    index_taz['precent_from_big_index']=index_taz['small_area']/index_taz['index_area']
+    
+    index_taz['precent_from_big_taz']=index_taz['small_area']/index_taz['taz_area']
+
+    index_taz=index_taz.loc[(index_taz['precent_from_big_index']>min_prec)|(index_taz['precent_from_big_taz']>0.9)]
+    
+    index_taz=index_taz[['id','Taz_num','precent_from_big_index']]
+
+    new_big=index_taz.groupby(['id']).sum()
+
+    index=index.set_index('id')
+    index['new_big']=new_big['precent_from_big_index']
+
+    index=pd.merge(index.reset_index(),index_taz,on='id')
+
+    for c in col_name_to_split:
+        index['{}'.format(c)]=index['{}'.format(c)]*(index['precent_from_big_index']/index['new_big'])
+        
+        
+    return index
