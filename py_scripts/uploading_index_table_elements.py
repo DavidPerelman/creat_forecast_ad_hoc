@@ -6,7 +6,7 @@ from status_exists import forecast
 borders_index=up_load_shp(r'{}\For_approval\Reference_tabels\shp\gvul_index.shp'.format(folder_path_save))
 
 index=up_load_df(r'{}\For_approval\Reference_tabels'.format(folder_path_save),index_file_name)
-
+print(index)
 index=pd.merge(borders_index,index,on='id',how='right')
 
 col=['add_uni_dorms',
@@ -27,3 +27,4 @@ col=['add_uni_dorms',
  'add_uni_students']
 
 index=split_index_by_taz(index,forecast,0.05,col)
+print(index)
