@@ -1,7 +1,7 @@
 import pandas as pd
 from functions import make_point, up_load_gdb, up_load_shp
 
-def add_Ggeographical_Features(forecast):
+def add_geographical_Features(forecast):
     forecast_point = make_point(forecast)
 
     subdistrict_il=up_load_gdb( r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data\needed_files\subdistrict2008.gdb','subdistrict2008_ITM')
