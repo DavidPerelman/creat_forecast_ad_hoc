@@ -36,5 +36,6 @@ def export_status_exists(forecast, folder_path_save,file_date):
 
     save_excel_path=r'{}\For_approval\{}_forecast_2020_For_approval.xlsx'.format(folder_path_save,file_date)
 
-    forecast_2020[col_20].to_excel(save_excel_path,index=False)
+    # return forecast_2020[col_20].to_excel(save_excel_path,index=False)
+    return forecast_2020[col_20]
 

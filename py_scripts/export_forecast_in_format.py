@@ -80,4 +80,5 @@ def export_forecast_format(forecast, folder_path_save, file_date):
 
     save_excel_path=r'{}\{}_forecast_2020.csv'.format(folder_path_save,file_date)
 
-    forecast_2020_for_model.to_csv(save_excel_path,index=False)
+    # return forecast_2020_for_model.to_csv(save_excel_path,index=False)
+    return forecast_2020_for_model
