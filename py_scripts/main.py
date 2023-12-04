@@ -1,7 +1,8 @@
 import pandas as pd
 from division_into_traffic_zones_of_plans import division_into_traffic_zones
 from export_forecast_in_format import export_forecast_format
-from export_geo_layer_for_client_control import export_layer
+from export_geo_layer_for_client_control import export_geo_layer
+from export_index_layer_for_client_control import export_index_layer
 from forecast import createForcast
 from geographical_features import add_geographical_Features
 from index_layer import index_layer_fun
@@ -27,7 +28,7 @@ forecast=createForcast()
 forecast=add_geographical_Features(forecast)
 
 # #### ייצוא שכבת אזורי תנועה לבקרת לקוח
-# forecast=export_layer(forecast, folder_path_save, file_date)
+# forecast=export_geo_layer(forecast, folder_path_save, file_date)
 
 # #### מצב קיים לבקרה
 # forecast=export_status_exists(forecast, folder_path_save, file_date)
@@ -45,7 +46,9 @@ divided_index=division_into_traffic_zones(index,forecast)
 ### שכבת אינדקס
 index_layer=index_layer_fun(divided_index)
 # print(index_layer.to_excel(r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc/index_layer.xlsx'))
-print(index_layer)
 
+#### ייצוא שכבת אינדקס לבקרת לקוח
+# index_layer_for_client_control=export_index_layer(index_layer,folder_path_save,file_date,forecast_version)
+print(index_layer)
 
 print('Done')
