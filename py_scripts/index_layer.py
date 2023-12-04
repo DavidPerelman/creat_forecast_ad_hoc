@@ -1,14 +1,41 @@
 import pandas as pd
-from main import index
+import geopandas
 
-pd.set_option('display.max_rows', None)
-pd.set_option('display.max_columns', None)
+def index_layer_fun(divided_index):
+    index=divided_index.fillna(0)
 
-def index_layer_fun(index):
+        #מקדים לייצרת תעסוקה עוקב משקי בית
+    Industry_precent_per_hh=0
+    Commerce_precent_per_hh=0.55
+    Business_precent_per_hh=0.2
+    Public_precent_per_hh=0.25
+    Agriculture_precent_per_hh=0
 
-    index=index.fillna(0)
+    precent_emp_per_hh=0.0
 
-    # print(index)
+    #מקדימים לייצרת מקומות עבודה מ"ר לפי ייעוד קרקע
+    m2_Industry_to_emp=200
+    m2_Commerce_Hotel_to_emp=30
+    m2_Business_to_emp=30
+    m2_Public_to_emp=60
+    m2_Agriculture_to_emp=0
+    m2_Education_to_emp=0
+    m2_Commerce_to_emp=m2_Commerce_Hotel_to_emp
+    m2_Tourism_to_emp=100
+
+    #מילוי
+
+    old_age_home_fill=1.5
+    uni_student_dorm_fill=3
+
+
+    #מקדימי תעסוקה בעקבות חינוך
+
+
+    emp_education_per_student=3.75
+    emp_Education_per_uni_student=0.1
+    emp_Education_per_Yeshiva_student=0.10
+
 
     convert_dict={
     'add_old_age_home': float,
@@ -72,8 +99,6 @@ def index_layer_fun(index):
         index['emp_{}'.format(c)]=index['emp_{}'.format(c)]*index['precent_till_2040']*index['Risk_factor']*index['emp_fill_factor']
         index['add_emp_{}'.format(c)]=index['emp_{}'.format(c)]+index['{}_m2'.format(c)]/locals()['m2_{}_to_emp'.format(c)]
 
-        index_by_taz=index.pivot_table(index='Taz_num',aggfunc=sum).fillna(0)
-        print(index_by_taz)
-    return index
-
-index_layer_fun(index)
+    drop_geometry=index.drop(['geometry'], axis=1)
+    index_by_taz=drop_geometry.pivot_table(index='Taz_num', aggfunc='sum').fillna(0)
+    return index_by_taz

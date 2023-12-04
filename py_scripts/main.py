@@ -4,9 +4,9 @@ from export_forecast_in_format import export_forecast_format
 from export_geo_layer_for_client_control import export_layer
 from forecast import createForcast
 from geographical_features import add_geographical_Features
+from index_layer import index_layer_fun
 from status_exists_for_control import export_status_exists
 from uploading_index_table_elements import uploading_index_table
-# from index_layer import index_layer_fun
 
 forecast_version='with_project_50_precent_bld'
 folder_path_save=r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data'
@@ -34,11 +34,18 @@ forecast=add_geographical_Features(forecast)
 
 # #### ייצוא תחזית בפורמט
 # forecast=export_forecast_format(forecast, folder_path_save, file_date)
-# print('forecast')
 
 #### העלאת מרכיבי טבלת אינדקס
-forecast=uploading_index_table(forecast, folder_path_save, file_date, index_file_name)
+# forecast=uploading_index_table(forecast, folder_path_save, file_date, index_file_name)
+index=uploading_index_table(forecast, folder_path_save, index_file_name)
 
 ### חלוקה לאזורי תנועה של התכניות
-forecast=division_into_traffic_zones(forecast)
-print(forecast)
+divided_index=division_into_traffic_zones(index,forecast)
+
+### שכבת אינדקס
+index_layer=index_layer_fun(divided_index)
+# print(index_layer.to_excel(r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc/index_layer.xlsx'))
+print(index_layer)
+
+
+print('Done')

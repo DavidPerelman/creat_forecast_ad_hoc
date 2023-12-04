@@ -1,18 +1,9 @@
-import fiona
-import geopandas as gpd
-import pandas as pd
 from functions import up_load_gdb
 
 # xl = pd.ExcelFile(r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data\קבצים לדוד מגדעון.xlsx') 
 # df = xl.parse('גיליון1') 
 
 # print(df['שם הקובץ'][0])
-
-# def up_load_gdb(path, layer_name):
-#     path='{}'.format(path)
-#     layer_list=fiona.listlayers(path)
-#     gpd_layer=gpd.read_file(path, layer=layer_list.index(layer_name))
-#     return gpd_layer
 
 def createForcast():
     folder_path_save=r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data'
@@ -23,4 +14,3 @@ def createForcast():
     return forecast
 
 forecast=createForcast()
-print(forecast)

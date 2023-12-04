@@ -32,7 +32,7 @@ def split_index_by_taz(index,taz,min_prec,col_name_to_split):
     
     taz['taz_area']=taz.area
 
-    index_taz=index.overlay(taz[['Taz_num','taz_area','geometry']])
+    index_taz=index.overlay(taz[['Taz_num','taz_area','geometry']], keep_geom_type=False)
 
     index_taz['small_area']=index_taz.area
 

@@ -16,10 +16,6 @@ lst=list(esmetions_explained.index)
 
 # print(lst)
 
-lsts = ['x', 'y', 'z']
-x = 42
-y = 56
-z = 78
 
 for l in lsts:
     print(locals())

@@ -1,7 +1,6 @@
 from functions import split_index_by_taz
 
-
-def division_into_traffic_zones(forecast):
+def division_into_traffic_zones(index,forecast):
     col=['add_uni_dorms',
     'add_old_age_home',
     'add_aprt',
@@ -20,3 +19,4 @@ def division_into_traffic_zones(forecast):
     'add_uni_students']
 
     index=split_index_by_taz(index,forecast,0.05,col)
+    return index
