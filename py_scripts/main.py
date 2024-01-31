@@ -54,7 +54,7 @@ index_layer=index_layer_fun(divided_index)
 ### חישוב תחזית
 
 #### הוספת תוספת בעקבות האינדקס
-index_with_extension=adding_an_addition(index_layer,forecast,forecast_2020)
+index_with_extension=adding_an_addition(index_layer,forecast,forecast_2020,folder_path_save,forecast_version)
 print(index_with_extension)
 
 print('Done')
