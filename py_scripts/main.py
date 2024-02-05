@@ -34,7 +34,7 @@ forecast=createForcast(folder_path_save)
 forecast=add_geographical_Features(forecast, folder_path_save)
 
 # #### ייצוא שכבת אזורי תנועה לבקרת לקוח
-# forecast=export_geo_layer(forecast, folder_path_save, file_date)
+forecast=export_geo_layer(forecast, folder_path_save, file_date)
 
 # #### מצב קיים לבקרה
 forecast_2020=export_status_exists(forecast, folder_path_save, file_date)
@@ -51,15 +51,15 @@ divided_index=division_into_traffic_zones(index,forecast)
 
 ### שכבת אינדקס
 index_layer=index_layer_fun(divided_index)
-# print(index_layer.to_excel(r'{}\index_layer.xlsx'.format(root_folder)))
+print(index_layer.to_excel(r'{}\index_layer.xlsx'.format(root_folder)))
 
 #### ייצוא שכבת אינדקס לבקרת לקוח
-# index_layer_for_client_control=export_index_layer(index_layer,folder_path_save,file_date,forecast_version)
+index_layer_for_client_control=export_index_layer(index_layer,folder_path_save,file_date,forecast_version)
 
 ### חישוב תחזית
 
 #### הוספת תוספת בעקבות האינדקס
 index_with_extension=adding_an_addition(index_layer,forecast,forecast_2020,folder_path_save,forecast_version)
-# print(index_with_extension)
+print(index_with_extension)
 
 print('Done')
