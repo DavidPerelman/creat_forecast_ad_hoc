@@ -52,7 +52,7 @@ def adding_an_addition(index_by_taz,forecast,forecast_2020,folder_path_save,fore
 
     forecast=forecast.rename(columns={'student':'student_20','uni_students':'uni_students_20','student_dorms':'student_dorms_20','student_yeshiva':'student_yeshiva_and_kollim_20','emp_not_okev':'emp_not_okev_20'})
 
-    age_des_types=up_load_df(r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data\backround_files','age_des_types')
+    age_des_types=up_load_df(r'{}\backround_files'.format(folder_path_save),'age_des_types')
 
     forecast=forecast.merge(age_des_types,on='classification_name',how='left').fillna(0)
 

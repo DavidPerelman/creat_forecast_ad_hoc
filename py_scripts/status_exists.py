@@ -3,7 +3,7 @@ from main import folder_path_save, file_date
 from functions import up_load_df
 from main import forecast
 
-forecast_2020=up_load_df(r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data\needed_files','2020_jtmt_forcast_full_230720')
+forecast_2020=up_load_df(r'{}\needed_files'.format(folder_path_save),'2020_jtmt_forcast_full_230720')
 
 col=['Name_hebre',
  'Shape_Length',

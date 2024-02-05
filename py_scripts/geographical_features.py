@@ -1,14 +1,14 @@
 import pandas as pd
 from functions import make_point, up_load_gdb, up_load_shp
 
-def add_geographical_Features(forecast):
+def add_geographical_Features(forecast, folder_path_save):
     forecast_point = make_point(forecast)
 
-    subdistrict_il=up_load_gdb( r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data\needed_files\subdistrict2008.gdb','subdistrict2008_ITM')
+    subdistrict_il=up_load_gdb( r'{}\needed_files\subdistrict2008.gdb'.format(folder_path_save),'subdistrict2008_ITM')
 
-    muni_JTMT=up_load_gdb( r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data\needed_files\MUNI_border.gdb','muni_under_JTMT_ITM')
+    muni_JTMT=up_load_gdb( r'{}\needed_files\MUNI_border.gdb'.format(folder_path_save),'muni_under_JTMT_ITM')
 
-    jeru_metro_jtmt_border=up_load_shp( r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data\needed_files\jeru_metro_jtmt_border_221114.shp')
+    jeru_metro_jtmt_border=up_load_shp( r'{}\needed_files\jeru_metro_jtmt_border_221114.shp'.format(folder_path_save))
 
     forecast_point_subdistrict_il=forecast_point.sjoin(subdistrict_il[['geometry','ENG_NAME_nafa']])[['Taz_num','ENG_NAME_nafa']]
 

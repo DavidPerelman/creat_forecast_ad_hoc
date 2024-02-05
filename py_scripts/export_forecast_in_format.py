@@ -74,7 +74,7 @@ def export_forecast_format(forecast, folder_path_save, file_date):
     'UO_Hi_Ed',
     'pop_emp_employed']
 
-    forecast_2020_for_model=up_load_df(r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data\needed_files','forecast_2020_230328')
+    forecast_2020_for_model=up_load_df(r'{}\needed_files'.format(folder_path_save),'forecast_2020_230328')
 
     forecast_2020_for_model=pd.merge(forecast[[]].reset_index(),forecast_2020_for_model,how='left',left_on='Taz_num',right_on='TAZ').fillna(0)
 

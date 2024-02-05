@@ -1,8 +1,8 @@
 import pandas as pd
 from functions import up_load_df
 
-def export_status_exists(forecast, folder_path_save,file_date):
-    forecast_2020=up_load_df(r'C:\Users\dpere\Documents\JTMT\creat_forecast_ad_hoc\data\needed_files','2020_jtmt_forcast_full_230720')
+def export_status_exists(forecast, folder_path_save, file_date):
+    forecast_2020=up_load_df(r'{}\needed_files'.format(folder_path_save,file_date),'2020_jtmt_forcast_full_230720')
 
     col=['Name_hebre',
     'Shape_Length',
