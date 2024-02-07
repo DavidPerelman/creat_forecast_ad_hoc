@@ -3,7 +3,7 @@ from functions import up_load_df
 # from status_exists import forecast
 # from main import folder_path_save, file_date, forecast
 
-def export_forecast_format(forecast, folder_path_save, file_date):
+def export_forecast_format(forecast, software_data_folder_location, file_date):
     col=['Taz_num',
     'yosh',
     'jeru_metro',
@@ -74,11 +74,11 @@ def export_forecast_format(forecast, folder_path_save, file_date):
     'UO_Hi_Ed',
     'pop_emp_employed']
 
-    forecast_2020_for_model=up_load_df(r'{}\needed_files'.format(folder_path_save),'forecast_2020_230328')
+    forecast_2020_for_model=up_load_df(r'{}\needed_files'.format(software_data_folder_location),'forecast_2020_230328')
 
     forecast_2020_for_model=pd.merge(forecast[[]].reset_index(),forecast_2020_for_model,how='left',left_on='Taz_num',right_on='TAZ').fillna(0)
 
-    save_excel_path=r'{}\{}_forecast_2020.csv'.format(folder_path_save,file_date)
+    save_excel_path=r'{}\{}_forecast_2020.csv'.format(software_data_folder_location,file_date)
 
-    # return forecast_2020_for_model.to_csv(save_excel_path,index=False)
+    forecast_2020_for_model.to_csv(save_excel_path,index=False)
     return forecast_2020_for_model
