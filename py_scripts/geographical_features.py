@@ -1,4 +1,5 @@
 import pandas as pd
+from forecast import forecast, folder_path_save
 from functions import make_point, up_load_gdb, up_load_shp
 
 def add_geographical_Features(forecast, software_data_folder_location):
@@ -14,26 +15,30 @@ def add_geographical_Features(forecast, software_data_folder_location):
 
     forecast_point_muni_JTMT=forecast_point.query('main_sector!="Palestinian"').sjoin(muni_JTMT[['Muni_Heb', 'Sug_Muni', 'CR_PNIM', 'geometry']])[['Taz_num','Muni_Heb', 'Sug_Muni', 'CR_PNIM']]
 
-    forecast_point_jeru_metro_jtmt_border=forecast_point.sjoin(jeru_metro_jtmt_border)[['Taz_num','jeru_metro']]
+forecast_point_jeru_metro_jtmt_border=forecast_point.sjoin(jeru_metro_jtmt_border)[['Taz_num','jeru_metro']]
 
-    forecast=forecast.merge(forecast_point_subdistrict_il,on='Taz_num',how='left').merge(forecast_point_muni_JTMT,on='Taz_num',how='left').merge(forecast_point_jeru_metro_jtmt_border,on='Taz_num',how='left').fillna(0)
+forecast=forecast.merge(forecast_point_subdistrict_il,on='Taz_num',how='left').merge(forecast_point_muni_JTMT,on='Taz_num',how='left').merge(forecast_point_jeru_metro_jtmt_border,on='Taz_num',how='left').fillna(0)
 
-    forecast['zonetype']=forecast['ENG_NAME_nafa']
+forecast['zonetype']=forecast['ENG_NAME_nafa']
 
-    forecast.loc[forecast['main_sector']=='Palestinian','zonetype']='Palestinian'
+forecast.loc[forecast['main_sector']=='Palestinian','zonetype']='Palestinian'
 
-    forecast['in_jerusalem_metropolin']='yes'
+forecast['in_jerusalem_metropolin']='yes'
 
-    forecast.loc[forecast['jeru_metro']==0,'in_jerusalem_metropolin']='no'
+forecast.loc[forecast['jeru_metro']==0,'in_jerusalem_metropolin']='no'
 
-    forecast['yosh']=0
+forecast['yosh']=0
 
-    forecast.loc[forecast['zonetype']=='Judea and Samaria','yosh']=1
+forecast.loc[forecast['zonetype']=='Judea and Samaria','yosh']=1
 
-    forecast['jerusalem_city']=1
+forecast['jerusalem_city']=1
 
-    forecast=forecast.set_index('Taz_num')
+forecast=forecast.set_index('Taz_num')
 
-    forecast['Taz_num']=forecast.index
+forecast['Taz_num']=forecast.index
 
-    return forecast
+file_date=pd.Timestamp.today().strftime('%y%m%d')
+
+save_shp_path=r'{}\For_approval\{}_taz_for_approval.shp'.format(folder_path_save,file_date)
+
+forecast.to_file(save_shp_path,index=False,encoding='UTF-8')
