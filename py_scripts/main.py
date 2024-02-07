@@ -12,13 +12,12 @@ from uploading_index_table_elements import uploading_index_table
 
 df_inputs_outputs = pd.read_excel('inputs_outputs.xlsx')
 
-forecast_version='with_project_50_precent_bld'
-
 software_data_folder_location=df_inputs_outputs['location'][0]
 client_data_folder_location=df_inputs_outputs['location'][1]
+forecast_version=df_inputs_outputs['location'][2]
+v_date=df_inputs_outputs['location'][3]
 
 file_date=pd.Timestamp.today().strftime('%y%m%d')
-v_date='230818'
 index_file_name='index_format_for_creating_forecast_jtmt_input_{}_{}'.format(forecast_version,v_date)
 
 pd.set_option('display.max_rows', None)
@@ -34,7 +33,7 @@ forecast=add_geographical_Features(forecast, software_data_folder_location)
 forecast=export_geo_layer(forecast, client_data_folder_location, file_date)
 
 # #### מצב קיים לבקרה
-forecast_2020=export_status_exists(forecast, software_data_folder_location, file_date)
+forecast_2020=export_status_exists(forecast, software_data_folder_location, client_data_folder_location, file_date)
 
 # #### ייצוא תחזית בפורמט
 forecast_2020_for_model=export_forecast_format(forecast, software_data_folder_location, file_date)

@@ -352,7 +352,6 @@ def adding_an_addition(index_by_taz,forecast,forecast_2020,software_data_folder_
     forecast.columns=col_new_name
 
     save_excel_path=r'{}\{}_forecast_2040_{}.csv'.format(client_data_folder_location,file_date,forecast_version)
-    print(r'{}\{}_forecast_2040_{}.csv'.format(client_data_folder_location,file_date,forecast_version))
 
     forecast.to_csv(save_excel_path,index=False)
 

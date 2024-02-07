@@ -1,8 +1,8 @@
 import pandas as pd
 from functions import up_load_df
 
-def export_status_exists(forecast, software_data_folder_location, file_date):
-    forecast_2020=up_load_df(r'{}\needed_files'.format(software_data_folder_location,file_date),'2020_jtmt_forcast_full_230720')
+def export_status_exists(forecast, software_data_folder_location, client_data_folder_location, file_date):
+    forecast_2020=up_load_df(r'{}\background_files'.format(software_data_folder_location,file_date),'2020_jtmt_forcast_full_230720')
 
     col=['Name_hebre',
     'Shape_Length',
@@ -34,7 +34,7 @@ def export_status_exists(forecast, software_data_folder_location, file_date):
 
     forecast_2020=pd.merge(forecast[col].reset_index(),forecast_2020[col_20],how='left',on='Taz_num').fillna(0)
 
-    save_excel_path=r'{}\For_approval\{}_forecast_2020_For_approval.xlsx'.format(software_data_folder_location,file_date)
+    save_excel_path=r'{}\For_approval\{}_forecast_2020_For_approval.xlsx'.format(client_data_folder_location,file_date)
 
     forecast_2020[col_20].to_excel(save_excel_path,index=False)
     return forecast_2020[col_20]

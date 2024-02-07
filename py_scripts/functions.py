@@ -4,7 +4,6 @@ import pandas as pd
 
 def up_load_gdb(path, layer_name):
     path='{}'.format(path)
-    print(path)
     layer_list=fiona.listlayers(path)
     gpd_layer=gpd.read_file(path, layer=layer_list.index(layer_name))
     return gpd_layer
