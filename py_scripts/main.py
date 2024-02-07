@@ -53,6 +53,7 @@ index_layer_for_client_control=export_index_layer(index_layer,client_data_folder
 ### חישוב תחזית
 
 #### הוספת תוספת בעקבות האינדקס
-index_with_extension=adding_an_addition(index_layer,forecast,forecast_2020,software_data_folder_location,client_data_folder_location,forecast_version)
+index_with_extension=adding_an_addition(index_layer,forecast,forecast_2020,folder_path_save,forecast_version)
+print(index_with_extension)
 
 print('Done')
