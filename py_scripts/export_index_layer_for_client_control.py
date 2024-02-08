@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 col=['id',
  'add_aprt',
  'add_aprt_nominally',

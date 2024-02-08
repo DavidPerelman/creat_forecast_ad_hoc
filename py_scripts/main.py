@@ -44,7 +44,6 @@ index=uploading_index_table(forecast, client_data_folder_location, index_file_na
 ### חלוקה לאזורי תנועה של התכניות
 divided_index=division_into_traffic_zones(index,forecast)
 
-print(divided_index)
 ### שכבת אינדקס
 index_layer=index_layer_fun(divided_index)
 

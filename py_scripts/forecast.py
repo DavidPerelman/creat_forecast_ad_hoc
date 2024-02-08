@@ -6,5 +6,3 @@ def createForcast(client_data_folder_location):
 
     forecast = up_load_gdb(r'{}\{}'.format(folder_path,gpd_name),'TAZ_211028_V3_Published_with_client_changes')
     return forecast
-
-# forecast=createForcast(client_data_folder_location)

@@ -356,5 +356,3 @@ def adding_an_addition(index_by_taz,forecast,forecast_2020,software_data_folder_
     forecast.to_csv(save_excel_path,index=False)
 
     return forecast
-
-    # logic_test_for_forecast(forecast)

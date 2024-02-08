@@ -1,7 +1,5 @@
 import pandas as pd
 from functions import up_load_df
-# from status_exists import forecast
-# from main import folder_path_save, file_date, forecast
 
 def export_forecast_format(forecast, software_data_folder_location, file_date):
     col=['Taz_num',
