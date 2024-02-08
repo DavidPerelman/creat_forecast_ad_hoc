@@ -29,7 +29,6 @@ col=['id',
 
 def export_index_layer(index_layer, client_data_folder_location,file_date,forecast_version):
     file_date=pd.Timestamp.today().strftime('%y%m%d')
-
     save_excel_path=r'{}\For_approval\Reference_tabels\{}_index_2040_{}_For_approval.xlsx'.format(client_data_folder_location,file_date,forecast_version)
     index_layer.pivot_table(index='id',aggfunc=sum).reset_index()[col].to_excel(save_excel_path,index=False)
 

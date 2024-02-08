@@ -11,13 +11,13 @@ from status_exists_for_control import export_status_exists
 from uploading_index_table_elements import uploading_index_table
 
 df_inputs_outputs = pd.read_excel('inputs_outputs.xlsx')
+forecast_version='without_project'
 
 software_data_folder_location=df_inputs_outputs['location'][0]
 client_data_folder_location=df_inputs_outputs['location'][1]
-forecast_version=df_inputs_outputs['location'][2]
-v_date=df_inputs_outputs['location'][3]
 
 file_date=pd.Timestamp.today().strftime('%y%m%d')
+v_date='240129'
 index_file_name='index_format_for_creating_forecast_jtmt_input_{}_{}'.format(forecast_version,v_date)
 
 pd.set_option('display.max_rows', None)
@@ -33,7 +33,7 @@ forecast=add_geographical_Features(forecast, software_data_folder_location)
 forecast=export_geo_layer(forecast, client_data_folder_location, file_date)
 
 # #### מצב קיים לבקרה
-forecast_2020=export_status_exists(forecast, software_data_folder_location, client_data_folder_location, file_date)
+forecast_2020=export_status_exists(forecast, software_data_folder_location, file_date)
 
 # #### ייצוא תחזית בפורמט
 forecast_2020_for_model=export_forecast_format(forecast, software_data_folder_location, file_date)
@@ -44,6 +44,7 @@ index=uploading_index_table(forecast, client_data_folder_location, index_file_na
 ### חלוקה לאזורי תנועה של התכניות
 divided_index=division_into_traffic_zones(index,forecast)
 
+print(divided_index)
 ### שכבת אינדקס
 index_layer=index_layer_fun(divided_index)
 
@@ -53,7 +54,6 @@ index_layer_for_client_control=export_index_layer(index_layer,client_data_folder
 ### חישוב תחזית
 
 #### הוספת תוספת בעקבות האינדקס
-index_with_extension=adding_an_addition(index_layer,forecast,forecast_2020,folder_path_save,forecast_version)
-print(index_with_extension)
+index_with_extension=adding_an_addition(index_layer,forecast,forecast_2020,software_data_folder_location,client_data_folder_location,forecast_version)
 
 print('Done')

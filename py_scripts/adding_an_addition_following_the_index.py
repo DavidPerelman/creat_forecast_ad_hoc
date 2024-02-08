@@ -1,6 +1,7 @@
+import pandas as pd
 from functions import up_load_df
 
-def adding_an_addition(index_by_taz,forecast,forecast_2020,folder_path_save,forecast_version):
+def adding_an_addition(index_by_taz,forecast,forecast_2020,software_data_folder_location,client_data_folder_location,forecast_version):
     #מקדים לייצרת תעסוקה עוקב משקי בית
     Industry_precent_per_hh=0
     Commerce_precent_per_hh=0.55
@@ -51,7 +52,7 @@ def adding_an_addition(index_by_taz,forecast,forecast_2020,folder_path_save,fore
 
     forecast=forecast.rename(columns={'student':'student_20','uni_students':'uni_students_20','student_dorms':'student_dorms_20','student_yeshiva':'student_yeshiva_and_kollim_20','emp_not_okev':'emp_not_okev_20'})
 
-    age_des_types=up_load_df(r'{}\backround_files'.format(software_data_folder_location),'age_des_types')
+    age_des_types=up_load_df(r'{}\background_files'.format(software_data_folder_location),'age_des_types')
 
     forecast=forecast.merge(age_des_types,on='classification_name',how='left').fillna(0)
 
@@ -271,7 +272,7 @@ def adding_an_addition(index_by_taz,forecast,forecast_2020,folder_path_save,fore
 
     file_date=pd.Timestamp.today().strftime('%y%m%d')
 
-    save_excel_path=r'{}\For_approval\{}_forecast_2040_{}_for_approval.xlsx'.format(folder_path_save,file_date,forecast_version)
+    save_excel_path=r'{}\For_approval\{}_forecast_2040_{}_for_approval.xlsx'.format(client_data_folder_location,file_date,forecast_version)
 
     forecast[col].to_excel(save_excel_path,index=False)
 
@@ -350,8 +351,10 @@ def adding_an_addition(index_by_taz,forecast,forecast_2020,folder_path_save,fore
 
     forecast.columns=col_new_name
 
-    save_excel_path=r'{}\{}_forecast_2040_{}.csv'.format(folder_path_save,file_date,forecast_version)
+    save_excel_path=r'{}\{}_forecast_2040_{}.csv'.format(client_data_folder_location,file_date,forecast_version)
 
     forecast.to_csv(save_excel_path,index=False)
 
     return forecast
+
+    # logic_test_for_forecast(forecast)
