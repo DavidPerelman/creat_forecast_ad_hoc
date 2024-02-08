@@ -4,30 +4,36 @@ from division_into_traffic_zones_of_plans import division_into_traffic_zones
 from export_forecast_in_format import export_forecast_format
 from export_geo_layer_for_client_control import export_geo_layer
 from export_index_layer_for_client_control import export_index_layer
-from forecast import createForcast
+from forecast import clientTaz
 from geographical_features import add_geographical_Features
 from index_layer import index_layer_fun
 from status_exists_for_control import export_status_exists
 from uploading_index_table_elements import uploading_index_table
 
-df_inputs_outputs = pd.read_excel('inputs_outputs.xlsx')
-forecast_version='without_project'
-
-software_data_folder_location=df_inputs_outputs['location'][0]
-client_data_folder_location=df_inputs_outputs['location'][1]
-
-file_date=pd.Timestamp.today().strftime('%y%m%d')
-v_date='240129'
-index_file_name='index_format_for_creating_forecast_jtmt_input_{}_{}'.format(forecast_version,v_date)
+#הגדרות כלליות
 
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 
-### הכנת טבלת בסיס לחישוב
-forecast=createForcast(client_data_folder_location)
+file_date=pd.Timestamp.today().strftime('%y%m%d')
+
+#העלת משתנים להרצת הקוד
+df_inputs_outputs = pd.read_excel('inputs_outputs.xlsx')
+
+software_data_folder_location=df_inputs_outputs['location'][0]
+client_data_folder_location=df_inputs_outputs['location'][1]
+forecast_version=df_inputs_outputs['location'][2]
+v_date=df_inputs_outputs['location'][3]
+index_file_name='index_format_for_creating_forecast_jtmt_input_{}_{}'.format(forecast_version,v_date)
+
+
+#העלת אזורי תנועה לחישוב
+forecast=clientTaz(client_data_folder_location)
 
 #### הוספת מאפיינים גיאוגרפים לאזורי תנועה
 forecast=add_geographical_Features(forecast, software_data_folder_location)
+
+print(forecast)
 
 # #### ייצוא שכבת אזורי תנועה לבקרת לקוח
 forecast=export_geo_layer(forecast, client_data_folder_location, file_date)
