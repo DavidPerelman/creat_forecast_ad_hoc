@@ -1,7 +1,7 @@
 import pandas as pd
 from functions import up_load_df
 
-def export_forecast_format(forecast, software_data_folder_location, file_date):
+def export_forecast_format(forecast, software_data_folder_location,client_data_folder_location, file_date):
     col=['Taz_num',
     'yosh',
     'jeru_metro',
@@ -76,7 +76,7 @@ def export_forecast_format(forecast, software_data_folder_location, file_date):
 
     forecast_2020_for_model=pd.merge(forecast[[]].reset_index(),forecast_2020_for_model,how='left',left_on='Taz_num',right_on='TAZ').fillna(0)
 
-    save_excel_path=r'{}\{}_forecast_2020.csv'.format(software_data_folder_location,file_date)
+    save_excel_path=r'{}\{}_forecast_2020.csv'.format(client_data_folder_location,file_date)
 
     forecast_2020_for_model.to_csv(save_excel_path,index=False)
     return forecast_2020_for_model
