@@ -10,7 +10,6 @@ def add_geographical_Features(forecast, software_data_folder_location):
     PUMA=up_load_gdb( r'{}\background_files\GIS_jtmt_forcast_v_3_2_Published.gdb'.format(software_data_folder_location),'TAZ_V3_2_220123_PUMA')
     jerusalem_city=up_load_gdb( r'{}\background_files\GIS_jtmt_forcast_v_3_2_Published.gdb'.format(software_data_folder_location),'TAZ_V3_2_220123_In_jerusal')
 
-
     forecast_point_DISTRICT=forecast_point.sjoin(DISTRICT)[['Taz_num','puma2040_csv_DISTRICT']]
     forecast_point_urban=forecast_point.sjoin(urban)[['Taz_num','BaseProjections2040_csv_urban']]
     forecast_point_SCHOOLDISTRICT=forecast_point.sjoin(SCHOOLDISTRICT)[['Taz_num','puma2040_csv_SCHOOLDISTRICT']]
@@ -53,6 +52,9 @@ def add_geographical_Features(forecast, software_data_folder_location):
     forecast['yosh']=0
 
     forecast.loc[forecast['zonetype']=='Judea and Samaria','yosh']=1
+
+    forecast['jerusalem_city']=forecast['In_jerusal']
+
 
     forecast=forecast.set_index('Taz_num')
 

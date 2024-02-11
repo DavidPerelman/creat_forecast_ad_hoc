@@ -33,7 +33,6 @@ forecast=clientTaz(client_data_folder_location)
 #### הוספת מאפיינים גיאוגרפים לאזורי תנועה
 forecast=add_geographical_Features(forecast, software_data_folder_location)
 
-print(forecast)
 
 # #### ייצוא שכבת אזורי תנועה לבקרת לקוח
 forecast=export_geo_layer(forecast, client_data_folder_location, file_date)
