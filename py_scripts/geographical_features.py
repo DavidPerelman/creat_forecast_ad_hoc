@@ -11,10 +11,10 @@ def add_geographical_Features(forecast, software_data_folder_location):
     jerusalem_city=up_load_gdb( r'{}\background_files\GIS_jtmt_forcast_v_3_2_Published.gdb'.format(software_data_folder_location),'TAZ_V3_2_220123_In_jerusal')
 
 
-    forecast_point_DISTRICT=forecast_point.sjoin(DISTRICT)[['Taz_num','DISTRICT']]
-    forecast_point_urban=forecast_point.sjoin(urban)[['Taz_num','urban']]
-    forecast_point_SCHOOLDISTRICT=forecast_point.sjoin(SCHOOLDISTRICT)[['Taz_num','SCHOOLDISTRICT']]
-    forecast_point_PUMA=forecast_point.sjoin(PUMA)[['Taz_num','PUMA']]
+    forecast_point_DISTRICT=forecast_point.sjoin(DISTRICT)[['Taz_num','puma2040_csv_DISTRICT']]
+    forecast_point_urban=forecast_point.sjoin(urban)[['Taz_num','BaseProjections2040_csv_urban']]
+    forecast_point_SCHOOLDISTRICT=forecast_point.sjoin(SCHOOLDISTRICT)[['Taz_num','puma2040_csv_SCHOOLDISTRICT']]
+    forecast_point_PUMA=forecast_point.sjoin(PUMA)[['Taz_num','puma2040_csv_PUMA']]
     forecast_point_jerusalem_city=forecast_point.sjoin(jerusalem_city)[['Taz_num','In_jerusal']]
 
     subdistrict_il=up_load_gdb( r'{}\background_files\subdistrict2008.gdb'.format(software_data_folder_location),'subdistrict2008_ITM')
