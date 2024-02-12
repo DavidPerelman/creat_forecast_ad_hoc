@@ -2,23 +2,9 @@ import pandas as pd
 from functions import up_load_df
 
 def export_status_exists(forecast, software_data_folder_location,client_data_folder_location, file_date):
-    forecast_2020=up_load_df(r'{}\background_files'.format(software_data_folder_location,file_date),'2020_jtmt_forcast_full_230720')
+    forecast_2020=up_load_df(r'{}\background_files'.format(software_data_folder_location),'2020_jtmt_forcast_full_230720')
 
-    col=['Name_hebre',
-    'Shape_Length',
-    'Shape_Area',
-    'main_sector',
-    'classification_name',
-    'geometry',
-    'ENG_NAME_nafa',
-    'Muni_Heb',
-    'Sug_Muni',
-    'CR_PNIM',
-    'jeru_metro',
-    'zonetype',
-    'in_jerusalem_metropolin',
-    'yosh',
-    'jerusalem_city']
+    col=[]
 
     col_20=['Taz_num','Taz_name',
     'main_secto',

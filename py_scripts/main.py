@@ -37,11 +37,9 @@ forecast=add_geographical_Features(forecast, software_data_folder_location)
 # #### ייצוא שכבת אזורי תנועה לבקרת לקוח
 forecast=export_geo_layer(forecast, client_data_folder_location, file_date)
 
-# #### מצב קיים לבקרה
+#### מצב קיים לבקרה
 forecast_2020=export_status_exists(forecast, software_data_folder_location,client_data_folder_location, file_date)
 
-# #### ייצוא תחזית בפורמט
-forecast_2020_for_model=export_forecast_format(forecast, software_data_folder_location,client_data_folder_location, file_date)
 
 #### העלאת מרכיבי טבלת אינדקס
 index=uploading_index_table(forecast, client_data_folder_location, index_file_name)
