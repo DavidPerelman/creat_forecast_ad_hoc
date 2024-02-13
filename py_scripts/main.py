@@ -1,7 +1,6 @@
 import pandas as pd
 from adding_an_addition_following_the_index import adding_an_addition
 from division_into_traffic_zones_of_plans import division_into_traffic_zones
-from export_forecast_in_format import export_forecast_format
 from export_geo_layer_for_client_control import export_geo_layer
 from export_index_layer_for_client_control import export_index_layer
 from forecast import clientTaz
@@ -9,7 +8,8 @@ from geographical_features import add_geographical_Features
 from index_layer import index_layer_fun
 from status_exists_for_control import export_status_exists
 from uploading_index_table_elements import uploading_index_table
-
+from uploading_index_table_elements import uploading_index_table
+from export_forecast_2040 import export_forecast
 #הגדרות כלליות
 
 pd.set_option('display.max_rows', None)
@@ -56,6 +56,9 @@ index_layer_for_client_control=export_index_layer(index_layer,client_data_folder
 ### חישוב תחזית
 
 #### הוספת תוספת בעקבות האינדקס
-index_with_extension=adding_an_addition(index_layer,forecast,forecast_2020,software_data_folder_location,client_data_folder_location,forecast_version)
+forecast=adding_an_addition(index_layer,forecast,forecast_2020,software_data_folder_location,client_data_folder_location,forecast_version)
+
+#ייצוא תוצאות
+export_forecast(forecast, client_data_folder_location, file_date, forecast_version)
 
 print('Done')
